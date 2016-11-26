@@ -1,5 +1,8 @@
 <?php
-include "articles.php";
+require_once "fonctions/bdd.php";
+include_once "fonctions/blog.php";
+$bdd = bdd();
+$articles = articles();
  ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,12 +20,12 @@ include "articles.php";
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">
-                    <a href="index.html">Muséo</a>
+                    <a href="index.php">Muséo</a>
                 </div>
                 <div class="col-sm-10">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.php">Accueil</a></li>
                             <li><a href="contact.html">Contact</a></li>
                             <li><a href="connexion.html">Connexion</a></li>
                             <li><a href="inscription.html">Inscription</a></li>
@@ -50,10 +53,10 @@ include "articles.php";
             <div class="col-md-4 col-sm-6">
                 <article>
                     <img src="<?= $article["image"] ?>" alt="<?= $article["image"] ?>">
-                    <p class="date">Posté le <time datetime="<?= $article["publication"] ?>"><?= $article["publication"] ?></time></p>
+                    <p class="date">Posté le <time datetime="<?= $article["publication"] ?>"><?= format_date($article["publication"]) ?></time></p>
                     <h1><?= $article["titre"] ?></h1>
-                    <p><?= $article["accroche"] ?></p>
-                    <a href="article.html">Lire l'article</a>
+                    <p><?= $article["accroche"] ?>...</p>
+                    <a href="article.php?id=<?= $article["id"] ?>">Lire l'article</a>
                 </article>
             </div>
           <?php
