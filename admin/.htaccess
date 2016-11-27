@@ -1,0 +1,4 @@
+Authname "Espace administrateur"
+Authtype Basic
+AuthUserFile "/opt/lampp/htdocs/museo/admin/.htpasswd"
+Require valid-user

@@ -1,10 +1,13 @@
 <?php
+session_start();
 require_once "fonctions/bdd.php";
 include_once "fonctions/blog.php";
 $bdd = bdd();
 $article = article();
 $nb_commentaires = nb_commentaires();
 $commentaires = commentaires();
+if(!empty($_POST))
+    $erreur = commenter();
  ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,40 +21,22 @@ $commentaires = commentaires();
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <a href="index.php">Muséo</a>
-                </div>
-                <div class="col-sm-10">
-                    <nav>
-                        <ul>
-                            <li><a href="index.php">Accueil</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="connexion.html">Connexion</a></li>
-                            <li><a href="inscription.html">Inscription</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include "header.php" ?>
     <div class="container article">
         <div class="row">
-            <form method="post" action="">
+            <form method="post" action="index.php">
                 <div class="col-sm-10">
-                    <input type="text" name="query" placeholder="Rechercher un article ...">
+                    <input type="text" name="query" placeholder="Rechercher un article ..." value="<? if(isset($_POST["query"])) echo $_POST["query"] ?>">
                 </div>
                 <div class="col-sm-2">
-                    <input type="submit" value="OK!">
+                    <input type="submit" value="OK">
                 </div>
             </form>
         </div>
         <div class="row">
             <article>
                 <div class="col-sm-5">
-                    <img src="<?= $article["image"]?>" alt="<?= $article["image"]?>">
+                    <img src="img/<?= $article["image"]?>" alt="<?= $article["image"]?>">
                 </div>
                 <div class="col-sm-7">
                     <p class="date">Posté le <time datetime="<?= $article["publication"]?>"><?= format_date($article["publication"])?></time></p>
@@ -78,25 +63,40 @@ $commentaires = commentaires();
         </div>
         <?php
         endforeach;
+        if(isset($_SESSION["membre"])) :
         ?>
         <div class="row">
             <div class="col-xs-12">
                 <form method="post" action="">
-                    <!--<div class="row">
-                        <div class="col-xs-12">
-                            <div class="message erreur">Ici j'affiche un message d'erreur !</div>
-                        </div>
-                    </div>
+                    <?php
+                    if(isset($erreur)) :
+                    if($erreur) :
+                    ?>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="message confirmation">Ici j'affiche un message de confirmation !</div>
+                            <div class="message erreur"><?= $erreur ?></div>
                         </div>
-                    </div>-->
+                    </div>
+                    <?php
+                    else :
+                    ?>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="message confirmation">Votre commentaire a bien été posté</div>
+                        </div>
+                    </div>
+                    <?php
+                    endif;
+                    endif;
+                    ?>
                     <textarea name="commentaire" placeholder="Votre commentaire *"></textarea>
                     <input type="submit" value="Commenter">
                 </form>
             </div>
         </div>
+        <?php
+        endif;
+        ?>
         <footer>
             <div class="row">
                 <div class="col-xs-12">

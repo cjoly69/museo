@@ -1,60 +1,65 @@
+<?php
+session_start();
+if(isset($_SESSION["membre"]))
+    header("Location: compte.php");
+require_once "fonctions/bdd.php";
+include_once "fonctions/membre.php";
+$bdd = bdd();
+if(!empty($_POST))
+    $erreurs = inscription();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Infoprog - Inscription</title>
+    <title>Muséo - Inscription</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,300,700">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <a href="index.html">infoprog</a>
-                </div>
-                <div class="col-sm-10">
-                    <nav>
-                        <ul>
-                            <li><a href="index.html">Accueil</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="connexion.html">Connexion</a></li>
-                            <li><a href="inscription.html">Inscription</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include "header.php" ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3">
-                <h1>Inscription sur Infoprog !</h1>
+                <h1>Inscription sur Muséo</h1>
             </div>
         </div>
         <form method="post" action="">
-            <!--<div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="message erreur">Ici j'affiche un message d'erreur !</div>
-                </div>
-            </div>
+          <?php
+          if(isset($erreurs)) :
+          if($erreurs) :
+          foreach($erreurs as $erreur) :
+          ?>
+          <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                  <div class="message erreur"><?= $erreur ?></div>
+              </div>
+          </div>
+          <?php
+          endforeach;
+          else :
+          ?>
+          <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                  <div class="message confirmation">Votre inscription est bien validée</div>
+              </div>
+          </div>
+          <?php
+          endif;
+          endif;
+          ?>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <div class="message confirmation">Ici j'affiche un message de confirmation !</div>
-                </div>
-            </div>-->
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <input type="text" name="pseudo" placeholder="Pseudo *">
+                    <input type="text" name="pseudo" placeholder="Pseudo *" value="<?php if(isset($_POST["pseudo"])) echo $_POST["pseudo"] ?>">
                 </div>
                 <div class="col-sm-6 col-sm-offset-3">
-                    <input type="text" name="email" placeholder="Adresse e-mail *">
+                    <input type="text" name="email" placeholder="Adresse e-mail *" value="<?php if(isset($_POST["email"])) echo $_POST["email"] ?>">
                 </div>
                 <div class="col-sm-6 col-sm-offset-3">
-                    <input type="text" name="emailconf" placeholder="Vérification de l'e-mail *">
+                    <input type="text" name="emailconf" placeholder="Vérification de l'e-mail *" value="<?php if(isset($_POST["emailconf"])) echo $_POST["emailconf"] ?>">
                 </div>
                 <div class="col-sm-6 col-sm-offset-3">
                     <input type="password" name="password" placeholder="Mot de passe *">
@@ -65,7 +70,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <input type="submit" value="M'inscrire!">
+                    <input type="submit" value="M'inscrire">
                 </div>
             </div>
         </form>
