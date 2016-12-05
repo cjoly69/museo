@@ -12,7 +12,7 @@ if(!empty($_POST))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Muséo - Contact</title>
+    <title>MUSéO - Contact</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,300,700">
     <link rel="stylesheet" href="main.css">
@@ -68,13 +68,7 @@ if(!empty($_POST))
                 </div>
             </div>
         </form>
-        <footer>
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="contact.php">Contact</a> - <a href="mentions.php">Mentions légales</a> - <a href="https://www.facebook.com/infoprog.tuto">Facebook</a>
-                </div>
-            </div>
-        </footer>
+        <?php include "footer.php" ?>
     </div>
 </body>
 </html>

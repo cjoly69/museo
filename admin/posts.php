@@ -56,13 +56,7 @@ $posts = posts();
                 </table>
             </div>
         </div>
-        <footer>
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="contact.php">Contact</a> - <a href="mentions.php">Mentions légales</a> - <a href="https://www.facebook.com/infoprog.tuto">Facebook</a>
-                </div>
-            </div>
-        </footer>
+        <?php include_once "../footer.php" ?>
     </div>
 </body>
 </html>

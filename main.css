@@ -39,7 +39,7 @@ body {
 }
 
 header {
-    background: #4caf50
+    background: #009688
 }
 
 @media (max-width: 767px) {
@@ -61,11 +61,11 @@ header [class^="col"]>a:hover {
 }
 
 header nav a {
-    color: #22733a
+    color: #fff
 }
 
 header nav a:hover {
-    color: #22733a;
+    color: #fff;
     text-decoration: none
 }
 
@@ -85,7 +85,7 @@ header nav a:hover {
 
 @media (max-width: 767px) {
     header nav ul {
-        background: #5fcf80
+        background: #02b5a4
     }
     header nav ul li {
         line-height: 50px;
@@ -134,7 +134,7 @@ form input[type="file"] {
 }
 
 form input[type="submit"] {
-    background: #4caf50;
+    background: #009688;
     color: white;
     font-size: 1.2em;
 }
@@ -166,7 +166,7 @@ form .erreur {
 }
 
 form .confirmation {
-    background: #5fcf80;
+    background: #02b5a4;
     border-bottom: 2px solid #34ad58
 }
 
@@ -188,7 +188,7 @@ table tr td:first-child {
     width: 80%;
     padding-left: 20px;
     text-align: left;
-    color: #5fcf80
+    color: #02b5a4
 }
 
 table tr td a {
@@ -239,7 +239,7 @@ table tr+tr {
 .article article a {
     float: right;
     font-size: 0.9em;
-    background: #4caf50;
+    background: #009688;
     color: white;
     border-radius: none;
     padding: 10px;
@@ -254,7 +254,7 @@ table tr+tr {
 }
 
 .commentaires>div .date {
-    color: #5fcf80;
+    color: #02b5a4;
     font-size: 0.8em;
     line-height: 2em;
     font-weight: 700
