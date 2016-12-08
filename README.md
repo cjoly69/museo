@@ -5,3 +5,4 @@ Projet de blog :
 - Possibilité de se connecter poster des commentaires
 - login admin
 - un formulaire de contact simple
+Version en ligne : cjoly.fr/museo/
