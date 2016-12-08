@@ -27,6 +27,13 @@ if(!empty($_POST))
                 <h1>Inscription sur Muséo</h1>
             </div>
         </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-offset-3">
+            <p>
+              Pour vous permettre de commenter les articles, merci de vous inscrire au blog
+            </p></br>
+          </div>
+        </div>
         <form method="post" action="">
           <?php
           if(isset($erreurs)) :

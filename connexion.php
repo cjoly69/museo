@@ -24,7 +24,7 @@ if(!empty($_POST))
     <div class="container">
         <div class="row">
             <div class="col-xs-12  col-sm-offset-3">
-                <h1>Connectez-vous</h1>
+                <h1>Commentez depuis votre espace perso</h1>
             </div>
         </div>
         <form method="post" action="">
